@@ -1,0 +1,77 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgohasjuc0pgx"]
+
+[ext_resource type="Script" uid="uid://q6twbljaaq8c" path="res://scripts/defeat_modal.gd" id="1_angr3"]
+[ext_resource type="AudioStream" uid="uid://bkdkbtiaxejy8" path="res://assets/sounds/defeath2.ogg" id="2_3rofj"]
+[ext_resource type="Texture2D" uid="uid://dnfdbyabovvrp" path="res://assets/defeath_modal.png" id="2_rqep7"]
+
+[node name="Defeat_modal" type="Control"]
+z_index = 4
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_angr3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_right = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.44, 0.3828, 0.3828, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 186.0
+offset_right = 1718.0
+offset_bottom = 786.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_rqep7")
+flip_h = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = 38.0
+offset_right = 70.0
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "reintentar"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = -46.0
+offset_right = 113.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.53, 0.53, 0.53, 1)
+theme_override_font_sizes/font_size = 50
+text = "DERROTA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_3rofj")
+autoplay = true
+
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
