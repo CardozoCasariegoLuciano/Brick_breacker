@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyfa10nejlt17"]
+
+[ext_resource type="Script" uid="uid://bjpwyq6jt80co" path="res://scripts/menu.gd" id="1_yqeox"]
+[ext_resource type="Texture2D" uid="uid://b2sqnxexxjn0c" path="res://assets/menu_bg.png" id="2_vjb58"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_con2f"]
+bg_color = Color(0, 0.32549, 0.345098, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vjb58"]
+bg_color = Color(0, 0.368627, 0.345098, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yqeox")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.545098)
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_vjb58")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 212.5
+offset_top = 42.5
+offset_right = 312.5
+offset_bottom = 85.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxFlat_con2f")
+theme_override_styles/normal = SubResource("StyleBoxFlat_vjb58")
+text = "Jugar"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 87.0
+offset_top = -159.5
+offset_right = 438.0
+offset_bottom = -90.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Brick Breacker"
+
+[connection signal="button_down" from="Button" to="." method="_on_button_down"]

@@ -8,6 +8,11 @@ func _ready() -> void:
 	Global.on_level_change.emit(level)
 	level_ui.on_change_current_bricks.emit(bricks_container.destructibles_bricks)
 	
+	if is_mobile():
+		var hud = preload("res://scenes/mobile_controller.tscn")
+		var hud_instance = hud.instantiate()
+		add_child(hud_instance)
+
 func _on_bricks_destroy(cuantity: int) -> void:
 	level_ui.on_change_current_bricks.emit(cuantity)
 	if cuantity == 0:
@@ -23,19 +28,31 @@ func _input(event: InputEvent) -> void:
 		add_child(a)
 		get_tree().paused = true
 
- #Armar la pag de ichio
-# Subirlo a git
+func is_mobile():
+	if JavaScriptBridge:
+		var result = JavaScriptBridge.eval("""
+			/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+		""", true)
+		return result
+	return false
+	
+#Mejorar los visuales
+#Mejorar el Sonido
+#Hacer los sprites de los botones y el resto del HUD
+#Actualizar el ichio
 
-#MVP: Hacer los sprites de los botones y el resto del HUD
-#MVP: Agregar que caigan poderes de los bloques
-#MVP: Agregar un guardado de partida para no arrancar del inico
-#MVP: Agregar un puntaje
-#MVP: Agregar bloques que requieran mas de un golpe
-#MVP: Agregar un selector de niveles
-#MVP: Agregar mas niveles
-#MVP: Agregar multijugador local (una en la parte de abajo y otro en la de arriba, cada uno con su pelota
+
+
+#TODO: Agregar un selector de niveles
+#TODO: Agregar que caigan poderes de los bloques
+#TODO: Agregar un guardado de niveles para no arrancar de el nivel 1
+#TODO: Agregar mas vidas para no arrancar el nivel desde 0
+#TODO: Agregar un puntaje
+#		EJ, mas puntos con combos de rebotes
+#		Guardar los puntajes de cada jugadore
+#TODO: Agregar bloques que requieran mas de un golpe
+#TODO: Agregar mas niveles
+#TODO: Agregar multijugador local (una en la parte de abajo y otro en la de arriba, cada uno con su pelota
 #		pero con los mismos bloques)
-#MVP: Mejorar los visuales
-#MVP: Mejorar el Sonido
-#MVP: Agregar una pantalla de inicio
-#MVP: Agregar una pantalla de opciones
+#TODO: Agregar una pantalla de opciones para modificar el sonido y los controles
+#TODO: Hacerlo multiidioma
