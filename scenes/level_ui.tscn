@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cp4ysh3g487rj"]
+[gd_scene load_steps=3 format=3 uid="uid://cp4ysh3g487rj"]
 
 [ext_resource type="Script" uid="uid://b66kwoo1s5uek" path="res://scripts/level_ui.gd" id="1_exbfu"]
+[ext_resource type="Texture2D" uid="uid://b5yjt608b1a3e" path="res://assets/orange_brick.png" id="2_qvfhj"]
 
 [node name="Level_UI" type="Control"]
 layout_mode = 3
@@ -11,34 +12,48 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_exbfu")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 992.0
-offset_top = 26.0
-offset_right = 1047.0
-offset_bottom = 66.0
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 132.0
+offset_bottom = 56.0
+scale = Vector2(0.669888, 0.703383)
+texture = ExtResource("2_qvfhj")
+
+[node name="bricks" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -11.5
+offset_right = 14.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 26.0
+offset_top = 56.0
+offset_right = 80.0
+offset_bottom = 79.0
 
 [node name="Label" type="Label" parent="HBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 16
 text = "Nivel"
 
 [node name="level" type="Label" parent="HBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 16
 text = "0"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 25.0
-offset_top = 12.0
-offset_right = 104.0
-offset_bottom = 52.0
-
-[node name="Label" type="Label" parent="HBoxContainer2"]
-layout_mode = 2
-text = "Bloques restantes:"
-
-[node name="bricks" type="Label" parent="HBoxContainer2"]
-layout_mode = 2
-text = "100"
 
 [connection signal="on_change_current_bricks" from="." to="." method="_on_change_current_bricks"]

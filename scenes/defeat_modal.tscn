@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgohasjuc0pgx"]
+[gd_scene load_steps=5 format=3 uid="uid://dgohasjuc0pgx"]
 
 [ext_resource type="Script" uid="uid://q6twbljaaq8c" path="res://scripts/defeat_modal.gd" id="1_angr3"]
 [ext_resource type="AudioStream" uid="uid://bkdkbtiaxejy8" path="res://assets/sounds/defeath2.ogg" id="2_3rofj"]
 [ext_resource type="Texture2D" uid="uid://dnfdbyabovvrp" path="res://assets/defeath_modal.png" id="2_rqep7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqep7"]
+bg_color = Color(0.18, 0.18, 0.18, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="Defeat_modal" type="Control"]
 z_index = 4
@@ -42,13 +49,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -61.0
-offset_top = 38.0
-offset_right = 70.0
-offset_bottom = 81.0
+offset_left = -84.0
+offset_top = 50.5
+offset_right = 84.0
+offset_bottom = 93.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 25
+theme_override_styles/hover = SubResource("StyleBoxFlat_rqep7")
 text = "reintentar"
 
 [node name="Label" type="Label" parent="."]

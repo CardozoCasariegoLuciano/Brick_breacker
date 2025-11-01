@@ -1,19 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://nmb1kyc10nlc"]
+[gd_scene load_steps=9 format=3 uid="uid://dy6wrktjwbear"]
 
 [ext_resource type="Script" uid="uid://qlvuov8pif8t" path="res://scripts/level.gd" id="1_wae8j"]
-[ext_resource type="PackedScene" uid="uid://c6vqudesphb3p" path="res://scenes/ball.tscn" id="2_ha73p"]
 [ext_resource type="PackedScene" uid="uid://bb5bg8l4dg2qo" path="res://scenes/defeat_area.tscn" id="3_vcx5n"]
-[ext_resource type="PackedScene" uid="uid://dn0l3aowog5wm" path="res://scenes/blade.tscn" id="4_56dhn"]
 [ext_resource type="PackedScene" uid="uid://cp4ysh3g487rj" path="res://scenes/level_ui.tscn" id="5_ax3dk"]
-[ext_resource type="Texture2D" uid="uid://dqi3acl5fick1" path="res://assets/paredes.png" id="6_q2dsb"]
 [ext_resource type="Script" uid="uid://bohme6gelcf6e" path="res://scripts/level_bricks_container.gd" id="7_p3r0x"]
 [ext_resource type="PackedScene" uid="uid://cxrguhfw66yl0" path="res://scenes/brick.tscn" id="8_5xqnf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6cvei"]
-size = Vector2(24, 513)
+size = Vector2(26, 571.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_que50"]
-size = Vector2(28, 519)
+size = Vector2(28, 575)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hey2k"]
 size = Vector2(587, 26)
@@ -29,19 +26,13 @@ color = Color(0.403922, 0.266667, 0.32549, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 offset_left = 290.0
-offset_top = 156.0
+offset_top = 103.0
 offset_right = 874.0
 offset_bottom = 660.0
-color = Color(0, 0, 0, 0.129412)
-
-[node name="ball" parent="." instance=ExtResource("2_ha73p")]
-position = Vector2(550, 586)
+color = Color(0.290196, 0.192157, 0.235294, 1)
 
 [node name="defeat_area" parent="." instance=ExtResource("3_vcx5n")]
 position = Vector2(579, 653)
-
-[node name="Blade" parent="." instance=ExtResource("4_56dhn")]
-position = Vector2(550, 614)
 
 [node name="Level_UI" parent="." instance=ExtResource("5_ax3dk")]
 anchors_preset = 0
@@ -51,33 +42,29 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="Walls" type="Node2D" parent="."]
+visible = false
 position = Vector2(0, 3)
 
-[node name="Sprite2D" type="Sprite2D" parent="Walls"]
-position = Vector2(576, 387)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("6_q2dsb")
-
 [node name="StaticBody2D" type="StaticBody2D" parent="Walls"]
-position = Vector2(277, 143)
+position = Vector2(274, 143)
 collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D"]
-position = Vector2(2, 246.5)
+position = Vector2(0, 222.75)
 shape = SubResource("RectangleShape2D_6cvei")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Walls"]
-position = Vector2(875, 148)
+position = Vector2(891, 148)
 collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D2"]
-position = Vector2(-1, 247.5)
+position = Vector2(-1, 219.5)
 shape = SubResource("RectangleShape2D_que50")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Walls"]
-position = Vector2(343, 140)
+position = Vector2(343, 84)
 collision_layer = 3
 collision_mask = 3
 
@@ -88,298 +75,224 @@ shape = SubResource("RectangleShape2D_hey2k")
 [node name="Bricks" type="Node2D" parent="."]
 script = ExtResource("7_p3r0x")
 
-[node name="brick3" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(331, 439)
-rotation = 1.5708
+[node name="brick4" parent="Bricks" instance=ExtResource("8_5xqnf")]
+position = Vector2(805, 454)
+rotation = 0.785398
 brick_color = 3
 
-[node name="brick4" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(331, 383)
-rotation = 1.5708
-brick_color = 6
-
 [node name="brick5" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(331, 327)
-rotation = 1.5708
+position = Vector2(805, 414)
+rotation = 0.785398
 brick_color = 3
 
 [node name="brick6" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(331, 271)
-rotation = 1.5708
-brick_color = 2
+position = Vector2(805, 374)
+rotation = 0.785398
+brick_color = 4
 
 [node name="brick7" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(331, 215)
-rotation = 1.5708
-brick_color = 1
+position = Vector2(805, 334)
+rotation = 0.785398
+brick_color = 4
+
+[node name="brick8" parent="Bricks" instance=ExtResource("8_5xqnf")]
+position = Vector2(805, 294)
+rotation = 0.785398
 
 [node name="brick9" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(373, 439)
-rotation = 1.5708
+position = Vector2(805, 254)
+rotation = 0.785398
 brick_color = 6
 
 [node name="brick10" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(373, 383)
-rotation = 1.5708
-brick_color = 3
-
-[node name="brick11" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(373, 327)
-rotation = 1.5708
-brick_color = 3
-
-[node name="brick12" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(373, 271)
-rotation = 1.5708
-brick_color = 1
-
-[node name="brick13" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(373, 215)
-rotation = 1.5708
-brick_color = 2
-
-[node name="brick15" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(776, 439)
-rotation = 1.5708
-
-[node name="brick16" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(776, 383)
-rotation = 1.5708
+position = Vector2(805, 214)
+rotation = 0.785398
 brick_color = 6
 
+[node name="brick11" parent="Bricks" instance=ExtResource("8_5xqnf")]
+position = Vector2(805, 174)
+rotation = 0.785398
+brick_color = 6
+
+[node name="brick12" parent="Bricks" instance=ExtResource("8_5xqnf")]
+position = Vector2(757, 454)
+rotation = 0.785398
+brick_color = 3
+
+[node name="brick13" parent="Bricks" instance=ExtResource("8_5xqnf")]
+position = Vector2(757, 414)
+rotation = 0.785398
+brick_color = 3
+
+[node name="brick14" parent="Bricks" instance=ExtResource("8_5xqnf")]
+position = Vector2(757, 374)
+rotation = 0.785398
+brick_color = 4
+
+[node name="brick15" parent="Bricks" instance=ExtResource("8_5xqnf")]
+position = Vector2(757, 334)
+rotation = 0.785398
+brick_color = 4
+
+[node name="brick16" parent="Bricks" instance=ExtResource("8_5xqnf")]
+position = Vector2(757, 294)
+rotation = 0.785398
+
 [node name="brick17" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(776, 327)
-rotation = 1.5708
+position = Vector2(757, 254)
+rotation = 0.785398
+brick_color = 6
 
 [node name="brick18" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(776, 271)
-rotation = 1.5708
+position = Vector2(757, 214)
+rotation = 0.785398
 brick_color = 6
 
 [node name="brick19" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(776, 215)
-rotation = 1.5708
+position = Vector2(757, 174)
+rotation = 0.785398
 brick_color = 6
+
+[node name="brick20" parent="Bricks" instance=ExtResource("8_5xqnf")]
+position = Vector2(411, 454)
+rotation = -0.785398
+brick_color = 3
 
 [node name="brick21" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(818, 439)
-rotation = 1.5708
+position = Vector2(411, 414)
+rotation = -0.785398
+brick_color = 3
 
 [node name="brick22" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(818, 383)
-rotation = 1.5708
+position = Vector2(411, 374)
+rotation = -0.785398
+brick_color = 4
 
 [node name="brick23" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(818, 327)
-rotation = 1.5708
-brick_color = 2
+position = Vector2(411, 334)
+rotation = -0.785398
+brick_color = 4
 
 [node name="brick24" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(818, 271)
-rotation = 1.5708
-brick_color = 6
+position = Vector2(411, 294)
+rotation = -0.785398
 
 [node name="brick25" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(818, 215)
-rotation = 1.5708
+position = Vector2(411, 254)
+rotation = -0.785398
+brick_color = 6
+
+[node name="brick26" parent="Bricks" instance=ExtResource("8_5xqnf")]
+position = Vector2(411, 214)
+rotation = -0.785398
+brick_color = 6
 
 [node name="brick27" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(683, 439)
-rotation = 1.5708
+position = Vector2(411, 174)
+rotation = -0.785398
+brick_color = 6
 
 [node name="brick28" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(683, 383)
-rotation = 1.5708
-brick_color = 6
+position = Vector2(363, 454)
+rotation = -0.785398
+brick_color = 3
 
 [node name="brick29" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(683, 327)
-rotation = 1.5708
-brick_color = 6
+position = Vector2(363, 414)
+rotation = -0.785398
+brick_color = 3
 
 [node name="brick30" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(683, 271)
-rotation = 1.5708
-brick_color = 2
+position = Vector2(363, 374)
+rotation = -0.785398
+brick_color = 4
 
 [node name="brick31" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(683, 215)
-rotation = 1.5708
-brick_color = 1
+position = Vector2(363, 334)
+rotation = -0.785398
+brick_color = 4
+
+[node name="brick32" parent="Bricks" instance=ExtResource("8_5xqnf")]
+position = Vector2(363, 294)
+rotation = -0.785398
 
 [node name="brick33" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(725, 439)
-rotation = 1.5708
+position = Vector2(363, 254)
+rotation = -0.785398
 brick_color = 6
 
 [node name="brick34" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(725, 383)
-rotation = 1.5708
+position = Vector2(363, 214)
+rotation = -0.785398
 brick_color = 6
 
 [node name="brick35" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(725, 327)
-rotation = 1.5708
-brick_color = 5
+position = Vector2(363, 174)
+rotation = -0.785398
+brick_color = 6
 
 [node name="brick36" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(725, 271)
-rotation = 1.5708
-brick_color = 6
+position = Vector2(620, 454)
+brick_color = 1
 
 [node name="brick37" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(725, 215)
-rotation = 1.5708
-brick_color = 2
+position = Vector2(620, 414)
+
+[node name="brick38" parent="Bricks" instance=ExtResource("8_5xqnf")]
+position = Vector2(620, 374)
+brick_color = 1
 
 [node name="brick39" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(591, 439)
-rotation = 1.5708
-brick_color = 6
+position = Vector2(620, 334)
 
 [node name="brick40" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(591, 383)
-rotation = 1.5708
-brick_color = 2
+position = Vector2(620, 294)
+brick_color = 5
 
 [node name="brick41" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(591, 327)
-rotation = 1.5708
-brick_color = 5
+position = Vector2(620, 254)
+brick_color = 1
 
 [node name="brick42" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(591, 271)
-rotation = 1.5708
-brick_color = 4
+position = Vector2(620, 214)
 
 [node name="brick43" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(591, 215)
-rotation = 1.5708
-brick_color = 4
+position = Vector2(620, 174)
+brick_color = 1
+
+[node name="brick44" parent="Bricks" instance=ExtResource("8_5xqnf")]
+position = Vector2(548, 454)
 
 [node name="brick45" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(633, 439)
-rotation = 1.5708
+position = Vector2(548, 414)
+brick_color = 1
 
 [node name="brick46" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(633, 383)
-rotation = 1.5708
-brick_color = 6
+position = Vector2(548, 374)
 
 [node name="brick47" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(633, 327)
-rotation = 1.5708
-brick_color = 2
+position = Vector2(548, 334)
+brick_color = 1
 
 [node name="brick48" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(633, 271)
-rotation = 1.5708
-brick_color = 1
+position = Vector2(548, 294)
+brick_color = 5
 
 [node name="brick49" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(633, 215)
-rotation = 1.5708
-brick_color = 4
+position = Vector2(548, 254)
+
+[node name="brick50" parent="Bricks" instance=ExtResource("8_5xqnf")]
+position = Vector2(548, 214)
+brick_color = 1
 
 [node name="brick51" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(501, 439)
-rotation = 1.5708
-brick_color = 1
+position = Vector2(548, 174)
 
-[node name="brick52" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(501, 383)
-rotation = 1.5708
-brick_color = 2
+[node name="InitialPosition" type="Marker2D" parent="."]
+position = Vector2(602, 614)
 
-[node name="brick53" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(501, 327)
-rotation = 1.5708
-brick_color = 4
+[node name="playables" type="Node2D" parent="."]
 
-[node name="brick54" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(501, 271)
-rotation = 1.5708
-brick_color = 4
-
-[node name="brick55" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(501, 215)
-rotation = 1.5708
-brick_color = 4
-
-[node name="brick57" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(543, 439)
-rotation = 1.5708
-brick_color = 2
-
-[node name="brick58" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(543, 383)
-rotation = 1.5708
-brick_color = 1
-
-[node name="brick59" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(543, 327)
-rotation = 1.5708
-brick_color = 5
-
-[node name="brick60" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(543, 271)
-rotation = 1.5708
-brick_color = 4
-
-[node name="brick61" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(543, 215)
-rotation = 1.5708
-brick_color = 4
-
-[node name="brick63" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(416, 439)
-rotation = 1.5708
-brick_color = 3
-
-[node name="brick64" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(416, 383)
-rotation = 1.5708
-brick_color = 6
-
-[node name="brick65" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(416, 327)
-rotation = 1.5708
-brick_color = 5
-
-[node name="brick66" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(416, 271)
-rotation = 1.5708
-brick_color = 2
-
-[node name="brick67" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(416, 215)
-rotation = 1.5708
-brick_color = 4
-
-[node name="brick69" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(458, 439)
-rotation = 1.5708
-brick_color = 3
-
-[node name="brick70" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(458, 383)
-rotation = 1.5708
-brick_color = 1
-
-[node name="brick71" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(458, 327)
-rotation = 1.5708
-brick_color = 2
-
-[node name="brick72" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(458, 271)
-rotation = 1.5708
-brick_color = 4
-
-[node name="brick73" parent="Bricks" instance=ExtResource("8_5xqnf")]
-position = Vector2(458, 215)
-rotation = 1.5708
-brick_color = 4
-
+[connection signal="on_live_lost" from="defeat_area" to="." method="_on_live_lost"]
 [connection signal="child_exiting_tree" from="Bricks" to="Bricks" method="_on_child_exiting_tree"]
 [connection signal="on_destroy_brick" from="Bricks" to="." method="_on_bricks_destroy"]

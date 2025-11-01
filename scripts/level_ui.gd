@@ -2,7 +2,7 @@ extends Control
 signal on_change_current_bricks(cant:int)
 
 @onready var level: Label = $HBoxContainer/level
-@onready var bricks: Label = $HBoxContainer2/bricks
+@onready var bricks: Label = $TextureRect/bricks
 
 func _ready() -> void:
 	Global.on_level_change.connect(update_level)

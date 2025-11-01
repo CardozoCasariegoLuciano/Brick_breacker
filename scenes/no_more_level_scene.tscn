@@ -1,9 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://deoubm5ydk808"]
+[gd_scene load_steps=7 format=3 uid="uid://deoubm5ydk808"]
 
 [ext_resource type="Script" uid="uid://codp1acd50i14" path="res://scripts/no_more_level_scene.gd" id="1_auwwl"]
 [ext_resource type="Texture2D" uid="uid://ck74raq43frf" path="res://assets/victory_bg.png" id="1_nga2m"]
 [ext_resource type="PackedScene" uid="uid://ccipepny7crpc" path="res://scenes/level_1.tscn" id="2_syebl"]
 [ext_resource type="AudioStream" uid="uid://d3myjix7lgsnj" path="res://assets/sounds/success.ogg" id="4_myfo7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_myfo7"]
+bg_color = Color(0.6, 0.5604, 0.204, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfr16"]
+bg_color = Color(0.6, 0.5678, 0.324, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="NoMoreLevelScene" type="Control"]
 layout_mode = 3
@@ -70,12 +84,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -43.5
-offset_top = 68.0
-offset_right = 43.5
-offset_bottom = 99.0
+offset_left = -67.5
+offset_top = 51.5
+offset_right = 67.5
+offset_bottom = 92.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 17
+theme_override_styles/hover = SubResource("StyleBoxFlat_myfo7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hfr16")
 text = "Volver a jugar"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

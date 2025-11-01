@@ -1,10 +1,18 @@
 extends Node2D
 @onready var level_ui: Control = $Level_UI
 @onready var bricks_container: Node2D = $Bricks
+@onready var initial_position: Marker2D = $InitialPosition
+@onready var playables: Node2D = $playables
 
 @export var level:int = 1
+@export var lives:int = 2
+
+const BALL = preload("res://scenes/ball.tscn")
+const BLADE = preload("res://scenes/blade.tscn")
 
 func _ready() -> void:
+	create_playables()
+	Global.current_lives = lives
 	Global.on_level_change.emit(level)
 	level_ui.on_change_current_bricks.emit(bricks_container.destructibles_bricks)
 	
@@ -24,8 +32,8 @@ func desconect_signals():
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
-		var a = preload("res://scenes/pause_modal.tscn").instantiate()
-		add_child(a)
+		var pause_modal = preload("res://scenes/pause_modal.tscn").instantiate()
+		add_child(pause_modal)
 		get_tree().paused = true
 
 func is_mobile():
@@ -35,18 +43,39 @@ func is_mobile():
 		""", true)
 		return result
 	return false
+
+func _on_live_lost() -> void:
+	create_playables()
+
+func create_playables():
+	remove_playables()
 	
-#Mejorar los visuales
-#Mejorar el Sonido
-#Hacer los sprites de los botones y el resto del HUD
-#Actualizar el ichio
+	var ball_instance = BALL.instantiate()
+	var blade_instance = BLADE.instantiate()
+	
+	var marker_position = initial_position.position
+	blade_instance.position = marker_position
+	ball_instance.position = Vector2(marker_position.x,marker_position.y - 50)
+	playables.call_deferred("add_child",ball_instance)
+	playables.call_deferred("add_child",blade_instance)
+
+func remove_playables():
+	for node in playables.get_children():
+		playables.remove_child(node)
 
 
 
+#TODO: Agregar mas vidas para no arrancar el nivel desde. 0
+#Agrgar el sonido
+#Agregar en el HUD las vidas
+#Que al perder la bola no salga de una sino que espera a que el jugador toque Space
+
+#TODO: Agregar una pantalla de opciones para modificar el sonido y los controles
 #TODO: Agregar un selector de niveles
+#TODO: Hacerlo multiidioma
+
+
 #TODO: Agregar que caigan poderes de los bloques
-#TODO: Agregar un guardado de niveles para no arrancar de el nivel 1
-#TODO: Agregar mas vidas para no arrancar el nivel desde 0
 #TODO: Agregar un puntaje
 #		EJ, mas puntos con combos de rebotes
 #		Guardar los puntajes de cada jugadore
@@ -54,5 +83,11 @@ func is_mobile():
 #TODO: Agregar mas niveles
 #TODO: Agregar multijugador local (una en la parte de abajo y otro en la de arriba, cada uno con su pelota
 #		pero con los mismos bloques)
-#TODO: Agregar una pantalla de opciones para modificar el sonido y los controles
-#TODO: Hacerlo multiidioma
+
+
+
+#Para el proximo update:
+#- Agregado menu de inicio
+#- Mejorado el visual de los niveles
+#- Ajuste a los niveles deacuerdo a sus dificultades
+#- Ajustados los bordes de la paleta para que sea mas probable que rebote para arriba
