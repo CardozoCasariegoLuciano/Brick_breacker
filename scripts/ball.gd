@@ -8,20 +8,34 @@ const INITIAL_SPEED = 400
 var current_speed = INITIAL_SPEED
 var velocity: Vector2 = Vector2(0, -1) * INITIAL_SPEED
 
+var static_mode = {
+	"active": true,
+	"target": null
+}
 var can_emit_blade_sound = true
 
+func init_ball(blade: Blade):
+	static_mode["target"] = blade
+
 func _physics_process(delta: float) -> void:
-	var collision = move_and_collide(velocity * delta)
-	if collision:
-		velocity = velocity.bounce(collision.get_normal()).normalized() * current_speed
-		handle_horizontal_bounce()
+	if static_mode["active"]:
+		position.x = static_mode["target"].position.x
+	else:
+		var collision = move_and_collide(velocity * delta)
+		if collision:
+			velocity = velocity.bounce(collision.get_normal()).normalized() * current_speed
+			handle_horizontal_bounce()
 		
-		if collision.get_collider() is Blade:
-			handle_blade_collition(collision)
-		elif collision.get_collider() is Brick:
-			handle_brick_collition(collision)
-		else:
-			emit_sound(preload("res://assets/sounds/ball_hit1.ogg"))
+			if collision.get_collider() is Blade:
+				handle_blade_collition(collision)
+			elif collision.get_collider() is Brick:
+				handle_brick_collition(collision)
+			else:
+				emit_sound(preload("res://assets/sounds/ball_hit1.ogg"))
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_select"):
+		static_mode["active"] = false
 
 func handle_blade_collition(collition: KinematicCollision2D):
 	var blade = collition.get_collider() as Blade

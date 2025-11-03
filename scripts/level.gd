@@ -5,14 +5,12 @@ extends Node2D
 @onready var playables: Node2D = $playables
 
 @export var level:int = 1
-@export var lives:int = 2
 
 const BALL = preload("res://scenes/ball.tscn")
 const BLADE = preload("res://scenes/blade.tscn")
 
 func _ready() -> void:
 	create_playables()
-	Global.current_lives = lives
 	Global.on_level_change.emit(level)
 	level_ui.on_change_current_bricks.emit(bricks_container.destructibles_bricks)
 	
@@ -50,8 +48,10 @@ func _on_live_lost() -> void:
 func create_playables():
 	remove_playables()
 	
-	var ball_instance = BALL.instantiate()
-	var blade_instance = BLADE.instantiate()
+	var ball_instance = BALL.instantiate() as Ball
+	var blade_instance = BLADE.instantiate() as Blade
+	
+	ball_instance.init_ball(blade_instance)
 	
 	var marker_position = initial_position.position
 	blade_instance.position = marker_position
@@ -63,12 +63,6 @@ func remove_playables():
 	for node in playables.get_children():
 		playables.remove_child(node)
 
-
-
-#TODO: Agregar mas vidas para no arrancar el nivel desde. 0
-#Agrgar el sonido
-#Agregar en el HUD las vidas
-#Que al perder la bola no salga de una sino que espera a que el jugador toque Space
 
 #TODO: Agregar una pantalla de opciones para modificar el sonido y los controles
 #TODO: Agregar un selector de niveles

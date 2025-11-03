@@ -56,4 +56,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "0"
 
+[node name="HP_Container" type="Node2D" parent="."]
+position = Vector2(1040, 36)
+
 [connection signal="on_change_current_bricks" from="." to="." method="_on_change_current_bricks"]

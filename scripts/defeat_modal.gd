@@ -2,6 +2,7 @@ extends Control
 
 func get_current_level() -> String:
 	var nivel = Global.current_lvl
+	Global.restore_lives()
 	return "res://scenes/level_" + str(nivel) +".tscn"
 
 func _on_button_button_up() -> void:
