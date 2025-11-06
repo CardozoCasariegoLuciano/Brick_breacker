@@ -1,0 +1,11 @@
+keys,es,en
+menu_btn_play,Jugar,Play
+ui_curr_lvl,Nivel,Level
+defeat_title,DERROTA,DEFEAT
+defeat_btn_retry,Reintentar,Retry
+win_text,"Completaste el ultimo nivel!!
+Proximamente se agregarán nuevos desafios","You completed the last level!! 
+New challenges are coming soon"
+win_btn_playagain,Volver a jugar,Play again
+pause_title,Pausa,Pause
+pause_text,Pulsa Esc para volver al juego,Press Esc to return to the game

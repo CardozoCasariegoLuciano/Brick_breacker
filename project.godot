@@ -48,6 +48,10 @@ action={
 
 pointing/emulate_touch_from_mouse=true
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://Traducciones.en.translation", "res://Traducciones.es.translation")
+
 [rendering]
 
 renderer/rendering_method="mobile"

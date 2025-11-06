@@ -28,7 +28,7 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
-text = "Pausa"
+text = "pause_title"
 
 [node name="Label2" type="Label" parent="."]
 anchors_preset = 8
@@ -42,4 +42,6 @@ offset_right = 113.5
 offset_bottom = 59.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Pulsa Esc para volver al juego"
+text = "pause_text"
+horizontal_alignment = 1
+vertical_alignment = 1

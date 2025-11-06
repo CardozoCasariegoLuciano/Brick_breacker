@@ -19,7 +19,7 @@ func init_ball(blade: Blade):
 
 func _physics_process(delta: float) -> void:
 	if static_mode["active"]:
-		position.x = static_mode["target"].position.x
+		global_position.x = static_mode["target"].global_position.x
 	else:
 		var collision = move_and_collide(velocity * delta)
 		if collision:
@@ -73,7 +73,7 @@ func handle_brick_collition(collition: KinematicCollision2D):
 
 func handle_horizontal_bounce():
 	if abs(velocity.y) < 20:
-		velocity.y = 50 * sign(velocity.y if velocity.y != 0 else -1)
+		velocity.y = 50 * sign(velocity.y if velocity.y != 0 else -1.0)
 
 func emit_sound(sound_resourse):
 	audio_stream_player.stream = sound_resourse

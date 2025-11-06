@@ -63,11 +63,9 @@ func remove_playables():
 	for node in playables.get_children():
 		playables.remove_child(node)
 
-
 #TODO: Agregar una pantalla de opciones para modificar el sonido y los controles
 #TODO: Agregar un selector de niveles
-#TODO: Hacerlo multiidioma
-
+#SPIKE: Hacer mas escalable la creacion de niveles (y mas SOLID)
 
 #TODO: Agregar que caigan poderes de los bloques
 #TODO: Agregar un puntaje
@@ -85,3 +83,6 @@ func remove_playables():
 #- Mejorado el visual de los niveles
 #- Ajuste a los niveles deacuerdo a sus dificultades
 #- Ajustados los bordes de la paleta para que sea mas probable que rebote para arriba
+#- Mas de una vida para cada nivel
+#- La pelota no se dispara de una
+#- Multi idioma

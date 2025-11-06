@@ -1,4 +1,5 @@
 extends Control
+@warning_ignore("UNUSED_SIGNAL")
 signal on_change_current_bricks(cant:int)
 
 @onready var level: Label = $HBoxContainer/level

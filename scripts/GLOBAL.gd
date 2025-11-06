@@ -2,7 +2,7 @@ extends Node
 signal on_level_change(level: int)
 signal on_lives_change(HP: int)
 
-const INITIAL_LIVES = 2
+const INITIAL_LIVES = 3
 
 var current_lvl: int
 
