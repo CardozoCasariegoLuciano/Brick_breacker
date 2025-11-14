@@ -9,3 +9,6 @@ New challenges are coming soon"
 win_btn_playagain,Volver a jugar,Play again
 pause_title,Pausa,Pause
 pause_text,Pulsa Esc para volver al juego,Press Esc to return to the game
+menu_btn_options,Opciones,Options
+options_sound,Sonidos,Sounds
+options_close_btn,Cerrar,Close

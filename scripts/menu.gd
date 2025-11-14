@@ -8,5 +8,11 @@ func _on_button_down() -> void:
 func _on_change_lang_to_EN() -> void:
 	TranslationServer.set_locale("en")
 
+
 func _on_change_lang_to_ES() -> void:
 	TranslationServer.set_locale("es")
+
+
+func _on_options_button() -> void:
+	var panel = preload("res://scenes/options_menu.tscn").instantiate()
+	add_child(panel)

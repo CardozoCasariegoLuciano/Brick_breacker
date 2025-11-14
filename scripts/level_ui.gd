@@ -32,3 +32,9 @@ func update_HP(HP):
 func clear_HP_textures():
 	for node in hp_container.get_children():
 		hp_container.remove_child(node)
+
+
+func _on_button_down() -> void:
+	get_tree().paused = true
+	var panel = preload("res://scenes/options_menu.tscn").instantiate()
+	add_child(panel)

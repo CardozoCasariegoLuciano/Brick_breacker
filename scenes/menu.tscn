@@ -44,25 +44,6 @@ offset_right = 1152.0
 offset_bottom = 648.0
 texture = ExtResource("2_vjb58")
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 212.5
-offset_top = 42.5
-offset_right = 312.5
-offset_bottom = 85.5
-grow_horizontal = 2
-grow_vertical = 2
-mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 20
-theme_override_styles/hover = SubResource("StyleBoxFlat_con2f")
-theme_override_styles/normal = SubResource("StyleBoxFlat_vjb58")
-text = "menu_btn_play"
-
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -97,6 +78,45 @@ offset_bottom = 1632.0
 scale = Vector2(0.0378764, 0.0481459)
 texture_normal = ExtResource("3_mhnvy")
 
-[connection signal="button_down" from="Button" to="." method="_on_button_down"]
+[node name="Play_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 189.0
+offset_top = 42.5
+offset_right = 336.0
+offset_bottom = 85.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxFlat_con2f")
+theme_override_styles/normal = SubResource("StyleBoxFlat_vjb58")
+text = "menu_btn_play"
+
+[node name="Options_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 189.0
+offset_top = 98.5
+offset_right = 336.0
+offset_bottom = 141.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxFlat_con2f")
+theme_override_styles/normal = SubResource("StyleBoxFlat_vjb58")
+text = "menu_btn_options"
+
 [connection signal="button_down" from="TextureButton" to="." method="_on_change_lang_to_ES"]
 [connection signal="button_down" from="TextureButton2" to="." method="_on_change_lang_to_EN"]
+[connection signal="button_down" from="Play_button" to="." method="_on_button_down"]
+[connection signal="button_down" from="Options_button" to="." method="_on_options_button"]

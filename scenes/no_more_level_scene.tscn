@@ -84,7 +84,7 @@ text = "win_btn_playagain"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_myfo7")
-volume_db = -12.899
+volume_db = 4.0
 autoplay = true
 
 [connection signal="button_up" from="Button" to="." method="_on_button_up"]

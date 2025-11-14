@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://bd575rm6f037o"]
+
+[ext_resource type="Script" uid="uid://o52nyby3dfug" path="res://scripts/volume_slider.gd" id="1_pt7px"]
+[ext_resource type="Texture2D" uid="uid://cp0iaqnvqkc1q" path="res://assets/slider_icon.png" id="2_jvwyw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pt7px"]
+draw_center = false
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.88, 0.988, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jvwyw"]
+bg_color = Color(0, 0.47, 0.0861667, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_poqi8"]
+bg_color = Color(0, 0.470588, 0.0862745, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[node name="VolumeSlider" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pt7px")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 16
+text = "[Audio channel]"
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 24.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_icons/grabber = ExtResource("2_jvwyw")
+theme_override_icons/grabber_highlight = ExtResource("2_jvwyw")
+theme_override_icons/grabber_disabled = ExtResource("2_jvwyw")
+theme_override_icons/tick = ExtResource("2_jvwyw")
+theme_override_styles/slider = SubResource("StyleBoxFlat_pt7px")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_jvwyw")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_poqi8")
+max_value = 1.0
+step = 0.001

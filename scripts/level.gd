@@ -13,7 +13,7 @@ func _ready() -> void:
 	create_playables()
 	Global.on_level_change.emit(level)
 	level_ui.on_change_current_bricks.emit(bricks_container.destructibles_bricks)
-	
+
 	if is_mobile():
 		var hud = preload("res://scenes/mobile_controller.tscn")
 		var hud_instance = hud.instantiate()
@@ -47,12 +47,12 @@ func _on_live_lost() -> void:
 
 func create_playables():
 	remove_playables()
-	
+
 	var ball_instance = BALL.instantiate() as Ball
 	var blade_instance = BLADE.instantiate() as Blade
-	
+
 	ball_instance.init_ball(blade_instance)
-	
+
 	var marker_position = initial_position.position
 	blade_instance.position = marker_position
 	ball_instance.position = Vector2(marker_position.x,marker_position.y - 50)
@@ -63,9 +63,13 @@ func remove_playables():
 	for node in playables.get_children():
 		playables.remove_child(node)
 
-#TODO: Agregar una pantalla de opciones para modificar el sonido y los controles
-#TODO: Agregar un selector de niveles
-#SPIKE: Hacer mas escalable la creacion de niveles (y mas SOLID)
+#TODO: Crear los sprites de:
+	#Modal de opciones
+	#La X para cerrar el modal
+	#El icono del engranaje para la UI
+
+
+
 
 #TODO: Agregar que caigan poderes de los bloques
 #TODO: Agregar un puntaje
@@ -79,7 +83,7 @@ func remove_playables():
 
 
 #Para el proximo update:
-#- Agregado menu de inicio
+#- Agregado menu de inicio y de opciones
 #- Mejorado el visual de los niveles
 #- Ajuste a los niveles deacuerdo a sus dificultades
 #- Ajustados los bordes de la paleta para que sea mas probable que rebote para arriba

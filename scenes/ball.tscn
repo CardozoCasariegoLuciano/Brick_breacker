@@ -39,10 +39,10 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_cxlvu")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -8.0
+volume_db = 4.0
 
 [node name="BladeSoundTImer" type="Timer" parent="."]
-wait_time = 0.148
+wait_time = 0.4
 one_shot = true
 
 [connection signal="timeout" from="BladeSoundTImer" to="." method="_on_blade_sound_timer_timeout"]

@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://b36nrpa1eshsx"]
+
+[ext_resource type="Script" uid="uid://damfp3ul6a5v3" path="res://scripts/options_menu.gd" id="1_hm4m4"]
+[ext_resource type="PackedScene" uid="uid://bd575rm6f037o" path="res://scenes/Volume_slider.tscn" id="1_liyum"]
+[ext_resource type="Texture2D" uid="uid://l0fr2khaiyd0" path="res://assets/menu_options.png" id="2_hm4m4"]
+[ext_resource type="Texture2D" uid="uid://b8qanhailmek3" path="res://assets/close_X.png" id="4_lfjc7"]
+
+[node name="Options_menu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_hm4m4")
+
+[node name="background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.717647)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -250.0
+offset_right = 175.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_hm4m4")
+
+[node name="Title" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.5
+offset_top = -235.5
+offset_right = 91.5
+offset_bottom = -196.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "menu_btn_options"
+
+[node name="Sound_title" type="Label" parent="."]
+offset_left = 421.0
+offset_top = 155.0
+offset_right = 563.0
+offset_bottom = 183.0
+theme_override_font_sizes/font_size = 20
+text = "options_sound"
+
+[node name="VolumeSlider" parent="." instance=ExtResource("1_liyum")]
+offset_left = 438.0
+offset_top = 204.0
+offset_right = -439.0
+offset_bottom = -383.0
+bus_name = "Master"
+
+[node name="VolumeSlider2" parent="." instance=ExtResource("1_liyum")]
+offset_left = 438.0
+offset_top = 265.0
+offset_right = -439.0
+offset_bottom = -322.0
+bus_name = "Music"
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 684.0
+offset_top = 91.0
+offset_right = 735.0
+offset_bottom = 142.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_lfjc7")
+
+[connection signal="button_down" from="TextureButton" to="." method="_on_close_button"]
