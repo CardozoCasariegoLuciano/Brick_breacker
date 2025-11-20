@@ -6,7 +6,7 @@ signal on_change_current_bricks(cant:int)
 @onready var bricks: Label = $TextureRect/bricks
 @onready var hp_container: Node2D = $HP_Container
 
-const HP_texture = "res://assets/blade.png"
+const HP_texture = "res://assets/playables/blade.png"
 
 func _ready() -> void:
 	Global.on_level_change.connect(update_level)

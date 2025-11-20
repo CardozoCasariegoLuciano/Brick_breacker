@@ -56,37 +56,24 @@ func create_playables():
 	var marker_position = initial_position.position
 	blade_instance.position = marker_position
 	ball_instance.position = Vector2(marker_position.x,marker_position.y - 50)
-	playables.call_deferred("add_child",ball_instance)
 	playables.call_deferred("add_child",blade_instance)
+	playables.call_deferred("add_child",ball_instance)
+
 
 func remove_playables():
 	for node in playables.get_children():
 		playables.remove_child(node)
 
-#TODO: Crear los sprites de:
-	#Modal de opciones
-	#La X para cerrar el modal
-	#El icono del engranaje para la UI
-
-
-
-
 #TODO: Agregar que caigan poderes de los bloques
+
+
 #TODO: Agregar un puntaje
 #		EJ, mas puntos con combos de rebotes
 #		Guardar los puntajes de cada jugadore
-#TODO: Agregar bloques que requieran mas de un golpe
 #TODO: Agregar mas niveles
 #TODO: Agregar multijugador local (una en la parte de abajo y otro en la de arriba, cada uno con su pelota
 #		pero con los mismos bloques)
 
 
-
-#Para el proximo update:
-#- Agregado menu de inicio y de opciones
-#- Mejorado el visual de los niveles
-#- Ajuste a los niveles deacuerdo a sus dificultades
-#- Ajustados los bordes de la paleta para que sea mas probable que rebote para arriba
-#- Mas de una vida para cada nivel
-#- La pelota no se dispara de una
-#- Multi idioma
+#Agregados bloques con mucha vida
+#Fix disparar con el celu

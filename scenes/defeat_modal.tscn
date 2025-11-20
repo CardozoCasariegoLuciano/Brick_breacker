@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://q6twbljaaq8c" path="res://scripts/defeat_modal.gd" id="1_angr3"]
 [ext_resource type="AudioStream" uid="uid://bkdkbtiaxejy8" path="res://assets/sounds/defeath2.ogg" id="2_3rofj"]
-[ext_resource type="Texture2D" uid="uid://dnfdbyabovvrp" path="res://assets/defeath_modal.png" id="2_rqep7"]
+[ext_resource type="Texture2D" uid="uid://dnfdbyabovvrp" path="res://assets/UI/defeath_modal.png" id="2_rqep7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqep7"]
 bg_color = Color(0.18, 0.18, 0.18, 1)

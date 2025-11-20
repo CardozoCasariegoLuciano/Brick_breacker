@@ -34,7 +34,7 @@ func _physics_process(delta: float) -> void:
 				emit_sound(preload("res://assets/sounds/ball_hit1.ogg"))
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_select"):
+	if event.is_action_pressed("action"):
 		static_mode["active"] = false
 
 func handle_blade_collition(collition: KinematicCollision2D):

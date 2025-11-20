@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bd575rm6f037o"]
 
 [ext_resource type="Script" uid="uid://o52nyby3dfug" path="res://scripts/volume_slider.gd" id="1_pt7px"]
-[ext_resource type="Texture2D" uid="uid://cp0iaqnvqkc1q" path="res://assets/slider_icon.png" id="2_jvwyw"]
+[ext_resource type="Texture2D" uid="uid://cp0iaqnvqkc1q" path="res://assets/UI/slider_icon.png" id="2_jvwyw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pt7px"]
 draw_center = false

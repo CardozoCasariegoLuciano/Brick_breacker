@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlihb0q2ikjo6"]
+[gd_scene load_steps=3 format=3 uid="uid://dlihb0q2ikjo6"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_a8yvl"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_lb74v"]
 
 [node name="MobileController" type="CanvasLayer"]
 
@@ -9,6 +11,13 @@ modulate = Color(1, 1, 1, 0)
 scale = Vector2(426, 647)
 texture_normal = SubResource("CanvasTexture_a8yvl")
 action = "left"
+
+[node name="shot" type="TouchScreenButton" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(426, 1)
+scale = Vector2(299, 645)
+texture_normal = SubResource("CanvasTexture_lb74v")
+action = "action"
 
 [node name="Right" type="TouchScreenButton" parent="."]
 modulate = Color(1, 1, 1, 0)
