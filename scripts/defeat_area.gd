@@ -5,7 +5,6 @@ signal on_live_lost
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Ball:
-		Global.lost_live()
 		if Global.current_lives == 0:
 			get_parent().desconect_signals()
 			await get_tree().create_timer(0.2).timeout

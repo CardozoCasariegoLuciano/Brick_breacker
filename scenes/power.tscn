@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8pcgqe3nvou4"]
+
+[ext_resource type="Texture2D" uid="uid://bpfb1mm8wm8ea" path="res://icon.svg" id="1_tvpre"]
+[ext_resource type="Script" uid="uid://c0kcu7wb2f8wm" path="res://scripts/power.gd" id="1_wv4di"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wv4di"]
+radius = 25.1794
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_epnfp"]
+radius = 36.0139
+
+[node name="Power" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_wv4di")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_wv4di")
+
+[node name="Icon" type="Sprite2D" parent="."]
+z_index = 12
+scale = Vector2(0.34375, 0.359375)
+texture = ExtResource("1_tvpre")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="Blade_detector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blade_detector"]
+shape = SubResource("CircleShape2D_epnfp")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]
+[connection signal="body_entered" from="Blade_detector" to="." method="_on_blade_entered"]

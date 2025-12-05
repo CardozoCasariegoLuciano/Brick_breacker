@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://ccipepny7crpc"]
+[gd_scene load_steps=13 format=3 uid="uid://ccipepny7crpc"]
 
 [ext_resource type="Script" uid="uid://qlvuov8pif8t" path="res://scripts/level.gd" id="1_pa8r4"]
 [ext_resource type="PackedScene" uid="uid://bb5bg8l4dg2qo" path="res://scenes/defeat_area.tscn" id="3_5xbjy"]
 [ext_resource type="PackedScene" uid="uid://cxrguhfw66yl0" path="res://scenes/brick.tscn" id="5_4nkto"]
+[ext_resource type="Script" uid="uid://dtxfgx8n5c0q4" path="res://scripts/types/power_types.gd" id="5_15mv3"]
 [ext_resource type="Script" uid="uid://bohme6gelcf6e" path="res://scripts/level_bricks_container.gd" id="6_e3sih"]
+[ext_resource type="Script" uid="uid://ce77pqkc86x7p" path="res://scripts/playables.gd" id="7_15mv3"]
 [ext_resource type="PackedScene" uid="uid://cp4ysh3g487rj" path="res://scenes/level_ui.tscn" id="7_pa8r4"]
 [ext_resource type="AudioStream" uid="uid://d47i1tpu83dc" path="res://assets/sounds/Sakura-Girl-Yay-chosic.com_.mp3" id="8_15mv3"]
 
@@ -15,6 +17,11 @@ size = Vector2(17, 576)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2os1m"]
 size = Vector2(592, 26)
+
+[sub_resource type="Resource" id="Resource_e3sih"]
+script = ExtResource("5_15mv3")
+type = 0
+metadata/_custom_type_script = "uid://dtxfgx8n5c0q4"
 
 [node name="Level_1" type="Node2D"]
 script = ExtResource("1_pa8r4")
@@ -77,20 +84,21 @@ hits_point = 4
 [node name="brick5" parent="Bricks" instance=ExtResource("5_4nkto")]
 position = Vector2(597, 343)
 rotation = 3.14159
+power_probability = 1.0
 brick_color = 4
 hits_point = 3
 
 [node name="brick6" parent="Bricks" instance=ExtResource("5_4nkto")]
 position = Vector2(627, 416)
 rotation = 3.14159
+power_probability = 1.0
 brick_color = 6
-hits_point = 2
 
 [node name="brick7" parent="Bricks" instance=ExtResource("5_4nkto")]
 position = Vector2(423, 357)
 rotation = 3.14159
+power_probability = 1.0
 brick_color = 3
-hits_point = 3
 
 [node name="brick8" parent="Bricks" instance=ExtResource("5_4nkto")]
 position = Vector2(606, 248)
@@ -110,6 +118,8 @@ brick_color = 5
 [node name="brick11" parent="Bricks" instance=ExtResource("5_4nkto")]
 position = Vector2(377, 197)
 rotation = 3.14159
+power_probability = 1.0
+power_type = SubResource("Resource_e3sih")
 
 [node name="Level_UI" parent="." instance=ExtResource("7_pa8r4")]
 anchors_preset = 0
@@ -128,6 +138,9 @@ parameters/looping = true
 position = Vector2(602, 614)
 
 [node name="playables" type="Node2D" parent="."]
+script = ExtResource("7_15mv3")
+
+[node name="PowersContainer" type="Node2D" parent="."]
 
 [connection signal="on_live_lost" from="defeat_area" to="." method="_on_live_lost"]
 [connection signal="child_exiting_tree" from="Bricks" to="Bricks" method="_on_child_exiting_tree"]

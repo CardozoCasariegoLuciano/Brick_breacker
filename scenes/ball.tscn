@@ -12,7 +12,7 @@ bounce = 1.0
 radius = 8.0
 
 [node name="ball" type="RigidBody2D"]
-collision_layer = 3
+collision_layer = 2
 mass = 0.001
 physics_material_override = SubResource("PhysicsMaterial_cxlvu")
 gravity_scale = 0.0
@@ -45,4 +45,7 @@ volume_db = 4.0
 wait_time = 0.4
 one_shot = true
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
 [connection signal="timeout" from="BladeSoundTImer" to="." method="_on_blade_sound_timer_timeout"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]

@@ -14,8 +14,20 @@ var static_mode = {
 }
 var can_emit_blade_sound = true
 
-func init_ball(blade: Blade):
+func init_ball(blade: Blade, initial_position):
 	static_mode["target"] = blade
+	position = Vector2(initial_position.x,initial_position.y - 50)
+	blade.on_get_power.connect(get_power)
+
+func clone_ball(ball: Ball, margin: int, angle: int):
+	var blade = ball.static_mode["target"]
+	static_mode = {
+		"active": false,
+		"target": blade
+ 	}
+	blade.on_get_power.connect(get_power)
+	position = Vector2(ball.position.x + margin, ball.position.y)
+	velocity = ball.velocity.rotated(deg_to_rad(angle))
 
 func _physics_process(delta: float) -> void:
 	if static_mode["active"]:
@@ -89,3 +101,14 @@ func emit_blade_sound():
 
 func _on_blade_sound_timer_timeout() -> void:
 	can_emit_blade_sound = true
+
+func get_power(power_code):
+	match power_code:
+			PowerType.Types.MULTI_BALL:
+				if(get_parent()):
+					get_parent().MULTI_BALL_CASE(self)
+			_:
+				pass
+
+func _on_screen_exited() -> void:
+	queue_free()

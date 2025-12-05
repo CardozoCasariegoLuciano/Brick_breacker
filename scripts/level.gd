@@ -3,14 +3,12 @@ extends Node2D
 @onready var bricks_container: Node2D = $Bricks
 @onready var initial_position: Marker2D = $InitialPosition
 @onready var playables: Node2D = $playables
+@onready var powers_container: Node2D = $PowersContainer
 
 @export var level:int = 1
 
-const BALL = preload("res://scenes/ball.tscn")
-const BLADE = preload("res://scenes/blade.tscn")
-
 func _ready() -> void:
-	create_playables()
+	playables.create_playables(initial_position)
 	Global.on_level_change.emit(level)
 	level_ui.on_change_current_bricks.emit(bricks_container.destructibles_bricks)
 
@@ -42,34 +40,31 @@ func is_mobile():
 		return result
 	return false
 
+
 func _on_live_lost() -> void:
-	create_playables()
+	print("Playables: ",playables.get_child_count())
+	if playables.get_child_count() <= 2:
+		
+		Global.lost_live()
+		remove_floating_powers()
+		playables.create_playables(initial_position)
+		
 
-func create_playables():
-	remove_playables()
+func add_power_in_containier(power):
+	powers_container.add_child(power)
 
-	var ball_instance = BALL.instantiate() as Ball
-	var blade_instance = BLADE.instantiate() as Blade
-
-	ball_instance.init_ball(blade_instance)
-
-	var marker_position = initial_position.position
-	blade_instance.position = marker_position
-	ball_instance.position = Vector2(marker_position.x,marker_position.y - 50)
-	playables.call_deferred("add_child",blade_instance)
-	playables.call_deferred("add_child",ball_instance)
-
-
-func remove_playables():
-	for node in playables.get_children():
-		playables.remove_child(node)
+func remove_floating_powers():
+	print(powers_container.get_children())
+	for node in powers_container.get_children():
+		powers_container.call_deferred("remove_child",node)
 
 #TODO: Agregar que caigan poderes de los bloques
+	#Crear los sprites de los poderes
+	#Agregar mas poderes y su funcinalidad
+	#Actualizar los niveles
+	#Agregar que los bloques tengan una pequeña chance de ser x2, x3 o x4
 
 
-#TODO: Agregar un puntaje
-#		EJ, mas puntos con combos de rebotes
-#		Guardar los puntajes de cada jugadore
 #TODO: Agregar mas niveles
 #TODO: Agregar multijugador local (una en la parte de abajo y otro en la de arriba, cada uno con su pelota
 #		pero con los mismos bloques)

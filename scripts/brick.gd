@@ -3,9 +3,12 @@ class_name Brick
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var sprite: Sprite2D = $Sprite2D
+
 var texture_hits_folder
 enum Bricks_color {RED, GREEN, BLUE, PURPLE, ORANGE, INDESTRUCTIBLE, YELLOW }
 
+@export var power_probability: float = 0.10
+@export var power_type: PowerType = null
 @export var brick_color: Bricks_color:
 	set(value):
 		brick_color = value
@@ -31,9 +34,9 @@ enum Bricks_color {RED, GREEN, BLUE, PURPLE, ORANGE, INDESTRUCTIBLE, YELLOW }
 			Bricks_color.INDESTRUCTIBLE:
 				texture_selected = preload("res://assets/bricks/Indestructible/indestructible_brick.png")
 @export_range(1, 4, 1) var hits_point: int = 1
+
 var current_hits_point: int
 var texture_selected: Texture2D
-
 
 func _ready() -> void:
 	if(brick_color == 0):
@@ -69,4 +72,20 @@ func get_texture_by_hit_points():
 
 
 func delete():
+	randomize()
+	if should_execute(power_probability):
+		generate_power()
 	queue_free()
+	
+func generate_power():
+	const power_scene = preload("res://scenes/power.tscn")
+	var instance = power_scene.instantiate() as Power
+	instance.init_power(position, power_type)
+	
+	var bricks_container = get_parent()
+	var level_scene = bricks_container.get_parent()
+	level_scene.add_power_in_containier(instance)
+	
+func should_execute(probability: float) -> bool:
+	return randf() < probability
+  
